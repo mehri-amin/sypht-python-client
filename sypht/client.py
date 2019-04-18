@@ -96,11 +96,11 @@ class SyphtClient(object):
         })
         return headers
 
-    def upload(self, file, fieldset, tags=None, endpoint=None, workflow=None, options=None):
+    def upload(self, file, fieldset, filename='fileToUpload', tags=None, endpoint=None, workflow=None, options=None):
         endpoint = urljoin(endpoint or self.base_endpoint, 'fileupload')
         headers = self._get_headers()
         files = {
-            'fileToUpload': file
+            'fileToUpload': ( filename, file )
         }
 
         data = {
